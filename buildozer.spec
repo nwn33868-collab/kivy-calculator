@@ -1,11 +1,11 @@
 [app]
-title = MyCalculator
-package.name = mycalculator
-package.domain = org.test
+title = GameMasterPro
+package.name = gamemasterpro
+package.domain = org.gmp
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
-version = 0.1
-requirements = python3,kivy==2.1.0
+version = 1.0
+requirements = python3,kivy==2.3.0,cython==0.29.33
 orientation = portrait
 android.accept_sdk_license = True
 android.archs = arm64-v8a, armeabi-v7a
