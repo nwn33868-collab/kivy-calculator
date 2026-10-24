@@ -8,7 +8,8 @@ version = 1.0
 requirements = python3,kivy==2.3.0,cython==0.29.33
 orientation = portrait
 android.accept_sdk_license = True
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
+android.ndk = 25b
 
 [buildozer]
 log_level = 2
