@@ -9,12 +9,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Cache Buildozer global directory
+      uses: actions/cache@v4
+      with:
+        path: ~/.buildozer
+        key: buildozer-global-${{ hashFiles('buildozer.spec') }}
+
     - name: Build with Buildozer
       uses: ArtemSBulgakov/buildozer-action@v1
       id: buildozer
       with:
         command: buildozer android debug
-        buildozer_version: stable
+        buildozer_version: master
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
