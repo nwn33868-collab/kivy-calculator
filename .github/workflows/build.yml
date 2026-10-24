@@ -1,29 +1,17 @@
-name: Build Kivy APK
+name: Build APK
 on: [push, workflow_dispatch]
 
 jobs:
   build-android:
-    name: Build for Android
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Cache Buildozer global directory
-      uses: actions/cache@v4
-      with:
-        path: ~/.buildozer
-        key: buildozer-global-${{ hashFiles('buildozer.spec') }}
-
+    - uses: actions/checkout@v4
     - name: Build with Buildozer
-      uses: ArtemSBulgakov/buildozer-action@v1
-      id: buildozer
+      uses: digreatbrian/buildozer-action@v2
       with:
-        command: buildozer android debug
-        buildozer_version: master
-
+        buildozer-cmd: buildozer -v android debug
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: package
-        path: ${{ steps.buildozer.outputs.filename }}
+        path: bin/*.apk
